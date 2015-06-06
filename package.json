@@ -6,7 +6,8 @@
     "start": "node ./bin/www"
   },
   "scripts": {
-     "nodemon": "export DEBUG=ceep:* && nodemon ./bin/www"
+    "start": "node ./bin/www",
+    "nodemon": "export DEBUG=ceep:* && nodemon ./bin/www"
   },
   "dependencies": {
     "bluebird": "^2.9.27",
