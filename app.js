@@ -12,8 +12,6 @@ var cartoes = require('./routes/cartoes');
 
 var app = express();
 
-debug(proccess.env);
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
