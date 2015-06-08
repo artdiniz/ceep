@@ -15,7 +15,7 @@ MuralController.prototype.saveOrUpdate = function(req, res, next) {
 
   this.DAO.updateAsync({ usuario: usuario }, mural)
 	  .then(function(result) {
-	    res.json("{message: Cartões salvos com usuário " + usuario + "}");
+	    res.json({message: "Cartões salvos com usuário " + usuario});
 	  })
 	  .catch(next);
 };
