@@ -23,6 +23,7 @@ MuralController.prototype.saveOrUpdate = function(req, res, next) {
 MuralController.prototype.find = function(req, res, next) {
 	this.DAO.findAsync({usuario: req.query.usuario})
 		.then(function(result){
+			result = result || {usuario: req.query.usuario, cartoes: []};
 			res.jsonp(result);
 		})
 		.catch(next);
