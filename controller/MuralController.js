@@ -13,15 +13,11 @@ MuralController.prototype.saveOrUpdate = function(req, res, next) {
 	var mural = req.body;
   var usuario = mural.usuario;
 
-  if(mural.cartoes){
-  	this.DAO.updateAsync({ usuario: usuario }, mural)
-	          .then(function(result) {
-	          	res.json({usuario: usuario, quantidade: mural.cartoes.length});
-	          })
-	          .catch(next);
-	} else {
-		res.json({usuario: usuario, quantidade: 0});
-	}
+	this.DAO.updateAsync({ usuario: usuario }, mural)
+          .then(function(result) {
+          	res.json({usuario: usuario, quantidade: mural.cartoes ? mural.cartoes.length : 0});
+          })
+          .catch(next);
 };
 
 MuralController.prototype.find = function(req, res, next) {
