@@ -10,6 +10,8 @@ function MuralController(DAO) {
 MuralController.prototype.saveOrUpdate = function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 
+	console.log(req.body)
+
 	var mural = req.body
   var usuario = mural.usuario;
 
