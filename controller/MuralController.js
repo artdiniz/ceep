@@ -10,18 +10,18 @@ function MuralController(DAO) {
 MuralController.prototype.saveOrUpdate = function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 
-	console.log(req.body)
-
-	var mural = req.body
+	var mural = req.body;
   var usuario = mural.usuario;
 
-  console.log(mural)
-
-  this.DAO.updateAsync({ usuario: usuario }, mural)
-	  .then(function(result) {
-	    res.json({usuario: usuario, quantidade: mural.cartoes.length});
-	  })
-	  .catch(next);
+  if(mural.cartoes){
+  	this.DAO.updateAsync({ usuario: usuario }, mural)
+	          .then(function(result) {
+	          	res.json({usuario: usuario, quantidade: mural.cartoes.length});
+	          })
+	          .catch(next);
+	} else {
+		res.json({usuario: usuario, quantidade: 0});
+	}
 };
 
 MuralController.prototype.find = function(req, res, next) {
