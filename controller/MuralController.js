@@ -7,20 +7,38 @@ function MuralController(DAO) {
 	this.DAO = _Promise.promisifyAll(DAO);
 }
 
+MuralController.prototype.help = function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+
+	res.json({instrucoes: [
+	{
+	   "conteudo": "Bem vindo ao Ceep!"
+	   ,"cor": "#FFAA10"
+	}
+	,{
+	   "conteudo": "O site é otimizado para celulares!"
+	   ,"cor": "#45AAEE"
+	}
+	,{
+		"conteudo": "Para mudar o layout, clique no botão Linha do cabeçalho"
+		,"cor": "#FF1010"
+	}
+	]});
+}
+
 MuralController.prototype.saveOrUpdate = function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 
 	var mural = req.body;
-  var usuario = mural.usuario;
+	var usuario = mural.usuario;
 
-  mural.cartoes = mural.cartoes || [];
-
+	mural.cartoes = mural.cartoes || [];
 
 	this.DAO.updateAsync({ usuario: usuario }, mural)
-          .then(function(result) {
-          	res.json({usuario: usuario, quantidade: mural.cartoes ? mural.cartoes.length : 0});
-          })
-          .catch(next);
+	        .then(function(result) {
+	      		res.json({usuario: usuario, quantidade: mural.cartoes ? mural.cartoes.length : 0});
+	        })
+	        .catch(next);
 };
 
 MuralController.prototype.find = function(req, res, next) {
