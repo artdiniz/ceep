@@ -3,7 +3,7 @@
 		 "username": ""
 		,"password": ""
 		,"host": "localhost"
-		,"port": 27017
+		,"port": 32768
 		,"database": "ceep"
 	}
 }
